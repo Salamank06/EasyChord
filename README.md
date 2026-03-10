@@ -31,4 +31,4 @@ El proyecto destaca por tres pilares fundamentales:
 3. Ejecutar 'ng serve' para iniciar el servidor de desarrollo.
 4. Acceder a localhost:4200 en el navegador.
 
-Este
+Este proyecto forma parte de un portafolio de desarrollo Frontend orientado a soluciones técnicas eficientes y escalables.
