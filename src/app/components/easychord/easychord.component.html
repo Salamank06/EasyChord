@@ -1,0 +1,64 @@
+<div class="page">
+  <header class="topbar" role="banner">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">EC</div>
+      <div class="brand-text">
+        <div class="title">EasyChord</div>
+        <div class="subtitle">Visualizador de acordes para piano (triadas)</div>
+      </div>
+    </div>
+
+    <form class="controls" (ngSubmit)="onCalculate()">
+      <label class="field">
+        <span class="label">Nota raíz</span>
+        <select name="root" [(ngModel)]="selectedRoot">
+          <option *ngFor="let note of allNotes" [value]="note">{{ note }}</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="label">Tipo</span>
+        <select name="type" [(ngModel)]="selectedType">
+          <option value="Mayor">Mayor</option>
+          <option value="Menor">Menor</option>
+        </select>
+      </label>
+
+      <button type="submit" class="cta">Visualizar Acorde</button>
+    </form>
+  </header>
+
+  <main class="content" role="main">
+    <div class="piano-shell" aria-label="Piano (12 teclas)">
+      <div class="piano-board">
+        <div class="piano-keys">
+          <button
+            type="button"
+            class="piano-key"
+            *ngFor="let key of pianoKeys"
+            [ngClass]="{
+              white: !key.isBlack,
+              black: key.isBlack,
+              active: key.isActive
+            }"
+            [attr.aria-pressed]="key.isActive"
+            (click)="onKeyPress(key)"
+          >
+            <span class="note">{{ key.note }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="info" aria-label="Ayuda rápida">
+      <div class="hint">
+        Selecciona la nota raíz y el tipo de acorde. Las teclas resaltadas muestran la triada calculada por semitonos.
+      </div>
+      <div class="legend">
+        <span class="chip chip-root">Raíz</span>
+        <span class="chip chip-other">Tercera/Quinta</span>
+      </div>
+    </section>
+  </main>
+</div>
+
